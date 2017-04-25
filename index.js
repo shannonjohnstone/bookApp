@@ -10,8 +10,6 @@ console.log(process.env.NODE_ENV, 'process.env.NODE_ENV') // eslint-disable-line
 
 const { port, nav } = config
 
-console.log(mongoUrl, 'mongoUrl') // eslint-disable-line
-
 // setup static folder routes
 app.use(express.static('public')) // css/js - public
 app.set('views', ('./src/views')) // views - views
