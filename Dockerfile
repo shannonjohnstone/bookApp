@@ -1,4 +1,5 @@
 FROM mhart/alpine-node
+MAINTAINER Shannon Johnstone <shannon@shannonjohnstone.com.au>
 
 # create APPDIR var
 ARG APPDIR=/usr/src/app
@@ -16,4 +17,4 @@ COPY . $APPDIR
 
 EXPOSE 3000
 
-CMD node index.js
+CMD NODE_ENV=dev node index.js

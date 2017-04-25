@@ -1,8 +1,6 @@
 const mongodb = require('mongodb').MongoClient
 const objectid = require('mongodb').ObjectID
-const config = require('../../config')
-
-const { mongoUrl } = config
+const config = require('../../config')(process.env.NODE_ENV)
 
 const bookController = (bookService, nav) => {
   console.log(bookService, 'bookService') // eslint-disable-line
@@ -13,7 +11,7 @@ const bookController = (bookService, nav) => {
   }
 
   const getAllBooks = (req, res) => {
-    mongodb.connect(mongoUrl, (err, db) => {
+    mongodb.connect(config.mongoUrl, (err, db) => {
       const collection = db.collection('books')
       collection.find({}).toArray((bookserr, books) => {
         if (bookserr) res.status(500).send(bookserr)
@@ -34,7 +32,7 @@ const bookController = (bookService, nav) => {
     else {
       const id = objectid(req.params.id)
 
-      mongodb.connect(mongoUrl, (err, db) => {
+      mongodb.connect(config.mongoUrl, (err, db) => {
         const collection = db.collection('books')
         collection.findOne({ _id: id }, (bookerr, book) => {
           if (bookerr) res.render('404', { title: '404', nav, message: 'There has been a technical issue, please try again later.' })

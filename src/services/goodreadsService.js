@@ -2,7 +2,7 @@ const http = require('http')
 const xml2js = require('xml2js')
 
 const parser = xml2js.Parser({ explictArray: false }) // eslint-disable-line
-const config = require('../../config')
+const config = require('../../config')(process.env.NODE_ENV)
 
 const { apiKey } = config
 

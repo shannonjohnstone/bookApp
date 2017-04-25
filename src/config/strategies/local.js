@@ -1,7 +1,7 @@
 const passport = require('passport')
 const mongodb = require('mongodb').MongoClient
 const LocalStrategy = require('passport-local').Strategy
-const config = require('../../../config')
+const config = require('../../../config')(process.env.NODE_ENV)
 const render404 = require('../../utils/render404Helper')
 
 module.exports = () => {

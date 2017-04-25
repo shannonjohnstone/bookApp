@@ -1,7 +1,7 @@
 const express = require('express')
 const mongodb = require('mongodb').MongoClient
 const passport = require('passport')
-const config = require('../../config')
+const config = require('../../config')(process.env.NODE_ENV)
 const render404 = require('../utils/render404Helper')
 
 const authRouter = express.Router() // eslint-disable-line

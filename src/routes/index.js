@@ -5,7 +5,7 @@ const authorRouter = require('./authorRoutes')
 
 module.exports = (app, nav) => {
   app.use('/auth', authRouter(nav))
-  app.use('/admin', adminRouter(nav))
+  app.use('/admin', adminRouter())
   app.use('/books', bookRouter(nav))
   app.use('/authors', authorRouter(nav))
 }
